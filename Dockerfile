@@ -5,6 +5,15 @@ WORKDIR /app
 ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
 
+RUN apt-get update && apt-get install -y \
+    libxcb1 \
+    libx11-6 \
+    libxext6 \
+    libxrender1 \
+    libsm6 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY pyproject.toml uv.lock* ./
 RUN pip install --no-cache-dir uv && \
     uv sync --frozen --no-dev
