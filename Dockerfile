@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     libxrender1 \
     libsm6 \
     libglib2.0-0 \
+    libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml uv.lock* ./
